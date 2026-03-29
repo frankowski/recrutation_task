@@ -182,6 +182,22 @@ class TestDataQualityMetrics:
         assert incorrect == 0, (
             f"Found {incorrect} records with incorrect total_amount calculation"
         )
+    
+    def test_gold_date_format_valid(self, gold_connection):
+        """
+        Test: sale_date has valid YYYY-MM-DD format.
+        
+        Validates data format consistency.
+        """
+        cursor = gold_connection.execute("""
+            SELECT COUNT(*) FROM gold_sales_data 
+            WHERE sale_date NOT GLOB '[0-9][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]'
+        """)
+        invalid = cursor.fetchone()[0]
+        
+        assert invalid == 0, (
+            f"Found {invalid} records with invalid date format (expected YYYY-MM-DD)"
+        )
 
 
 # =============================================================================

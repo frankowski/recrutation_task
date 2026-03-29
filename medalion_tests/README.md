@@ -90,6 +90,7 @@ class DataPaths:
 | `test_no_duplicates_in_gold` | Gold total == Gold distinct |
 | `test_gold_has_required_columns` | Wszystkie kolumny obecne |
 | `test_gold_total_amount_calculated` | total_amount == quantity * price |
+| `test_gold_date_format_valid` | sale_date w formacie YYYY-MM-DD |
 
 ## Oczekiwany output
 
@@ -105,7 +106,7 @@ Faulty rate:                10.0%
 Data loss:                     0 records
 ==================================================
 
-============================== 9 passed ==============================
+============================== 10 passed ==============================
 ```
 
 ## Troubleshooting
